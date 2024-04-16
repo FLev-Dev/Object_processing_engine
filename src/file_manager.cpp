@@ -67,6 +67,7 @@ bool File_manager::read_from_file(std::string file_name){
     }
     std::vector<Object> result;
     std::vector<std::string> types;
+    int unrecognized = 0;
     for (std::string str; file >> str;){
         Object object;
         object.name = str;
@@ -74,8 +75,17 @@ bool File_manager::read_from_file(std::string file_name){
         file >> object.y >> object.type;
         types.push_back(object.type);
         file >> object.time;
+        if(object.name.empty() || object.x == 0 || object.y == 0
+                || object.type.empty() || object.time < 0){
+            unrecognized++;
+            continue;
+        }
         result.push_back(object);
+
     }
+    if(unrecognized != 0)
+        add_to_log("File \"" + default_file
+                   + "\". Lines unrecognized:" + std::to_string(unrecognized));
     file.close();
     engine->add_new_object_types(types);
     engine->set_objects(result);

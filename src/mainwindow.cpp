@@ -73,6 +73,12 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 void MainWindow::enable_buttons(){
+    if(engine.get_objects().size() < 1){
+        ui->check_data_button->setEnabled(false);
+        ui->save_button->setEnabled(false);
+        ui->sort_button->setEnabled(false);
+        return;
+    }
     ui->check_data_button->setEnabled(true);
     ui->save_button->setEnabled(true);
     if(engine.get_objects().size() > 1)
