@@ -14,9 +14,9 @@ You need:
 
 `$ mkdir build && cd build`
 
-`qmake ../Object_processing_engine.pro`
+`$ qmake ../Object_processing_engine.pro`
 
-`mingw32-make` or, if you want to use it more quickly, you can use `mingw32-make -j8`
+`$ mingw32-make` or, if you want to use it more quickly, you can use `$ mingw32-make -j8`
 This will increase the number of processes to 8.
 
  ***NOTE:*** You should use the compiler provided by Qt. You can find it here: "Qt\Qt5.12.12\Tools\mingw\bin\mingw32-make.exe".
